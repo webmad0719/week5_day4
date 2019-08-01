@@ -1,0 +1,32 @@
+<h1>{{title}}</h1>
+<p>Welcome to {{title}}</p>
+<hr>
+
+<section>
+  <h2>Upload your photo</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    Nombre: <input type="text" name="name"><br><br>
+    Archivo: <input type="file" name="photo"><br><br>
+    <input type="submit" value="Save">
+  </form>
+</section>
+
+<hr>
+
+<section>
+
+  {{#each pictures}}
+  <figure style="width: 25%; display:inline-block">
+    <img src="{{ this.path }}" alt="{{ this.originalName }}" style="width: 100%;" />
+    <figcaption>
+      <h3>{{ this.name }}</h3>
+    </figcaption>
+  </figure>
+  {{#else}}
+
+  <p>Ninguna imagen en la BBDD, ¿por qué no subes una ahora?</p>
+
+  {{/else}}
+  {{/each}}
+
+</section>
